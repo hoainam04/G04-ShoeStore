@@ -52,12 +52,23 @@ namespace ConsoleAppPL
 					Console.WriteLine("|-----------------------------------------------------------------------|");
 					Console.WriteLine("| 1.Search name                                                         |");
 					Console.WriteLine("| 2.Search id                                                           |");
-					Console.WriteLine("| 3.Search price                                                        |");
-					Console.WriteLine("| 4.Search brand                                                        |");
-					Console.WriteLine("| 5.Exits                                                               |");
+					Console.WriteLine("| 3.Search brand                                                        |");
+					Console.WriteLine("| 4.Exits                                                               |");
 					Console.WriteLine("+-----------------------------------------------------------------------+");
 					Console.Write("Input choice:");
 					choi = Convert.ToInt32(Console.ReadLine());
+						switch (choi)
+						{
+							case 1: //search name
+							
+								break;
+							case 2: //search id
+								break;
+							case 3: //search brand
+								break;	
+							default:
+								break;
+						}
 					
 					break;
 				case 2:
