@@ -34,7 +34,7 @@ namespace ConsoleAppPL
 
 			}
 			int choice;
-			Console.WriteLine("/t...Wellcome to System...");
+			Console.WriteLine("\t\t\t...Wellcome to System...");
 			Console.WriteLine("+============================================================================+");
 			Console.WriteLine("|                                  Menu                                      |");
 			Console.WriteLine("+----------------------------------------------------------------------------+");
@@ -60,11 +60,16 @@ namespace ConsoleAppPL
 						switch (choi)
 						{
 							case 1: //search name
-							
+							Console.Write("Input Search Name:");
+							string searchName = Convert.ToString(Console.ReadLine());
 								break;
 							case 2: //search id
+							Console.Write("Input Search Id:");
+							string searchId = Convert.ToString(Console.ReadLine());
 								break;
 							case 3: //search brand
+							Console.Write("Input Search Brand:");
+							string searchBrand = Convert.ToString(Console.ReadLine());
 								break;	
 							default:
 								break;
