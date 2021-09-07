@@ -93,7 +93,6 @@ namespace ConsoleAppPL
                         if (o == "Y" || o == "y")
                         {
                             Console.Write("GOOD BYE...");
-                            Console.ReadKey();
                             Environment.Exit(0);
                         }
                         break;
