@@ -11,12 +11,19 @@ namespace ConsoleAppPL
 			int login = 0;
 			do
 			{
+				string pass;
+				string userName;
+				do{
 				Console.Write("User Name: ");
-				string userName = Console.ReadLine();
+				userName = Console.ReadLine();
 				Console.Write("Password: ");
-				string pass = GetPassword();
+				pass = GetPassword();
 				Console.WriteLine();
-				//v
+				if (pass.Length<8)
+				{
+					Console.WriteLine("Password must be 8 characters or more");
+				}
+				}while (pass.Length<8);
 				Staff staff = new Staff() { UserName = userName, Password = pass };
 				StaffBl bl = new StaffBl();
 
@@ -28,11 +35,7 @@ namespace ConsoleAppPL
 				};
 			}
 			while (login <= 0);
-			if (login <= 0)
-			{
-				Console.WriteLine("Can't Login");
 
-			}
 			int choice;
 			Console.WriteLine("\t\t\t...Wellcome to System...");
 			Console.WriteLine("+============================================================================+");
