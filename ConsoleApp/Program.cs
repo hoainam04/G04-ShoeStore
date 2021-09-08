@@ -36,12 +36,12 @@ namespace ConsoleAppPL
                 }
                 else
                 {
+                    Console.WriteLine("\t\t\t...Wellcome to System...");
                     break;
                 }
             }
             while (true)
             {
-                Console.WriteLine("\t\t\t...Wellcome to System...");
                 Console.WriteLine("+============================================================================+");
                 Console.WriteLine("|                                  Menu                                      |");
                 Console.WriteLine("+----------------------------------------------------------------------------+");
