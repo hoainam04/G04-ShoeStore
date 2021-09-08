@@ -8,8 +8,8 @@ namespace ConsoleAppPL
     {
         static void Main(string[] args)
         {
-            int login = 0;
-            do
+
+            while (true)
             {
                 string pass;
                 string userName;
@@ -28,16 +28,17 @@ namespace ConsoleAppPL
                 Staff staff = new Staff() { UserName = userName, Password = pass };
                 StaffBl bl = new StaffBl();
 
-                login = bl.Login(staff);
-                if (login <= 0)
+                staff = bl.Login(staff);
+                if (staff.Role <= 0)
                 {
                     Console.WriteLine("Can't Login");
 
-                };
+                }
+                else
+                {
+                    break;
+                }
             }
-            while (login <= 0);
-
-            int choice;
             while (true)
             {
                 Console.WriteLine("\t\t\t...Wellcome to System...");
@@ -49,7 +50,7 @@ namespace ConsoleAppPL
                 Console.WriteLine("| 3.Exit System                                                              |");
                 Console.WriteLine("+============================================================================+");
                 Console.Write("Enter choice:");
-                choice = Convert.ToInt32(Console.ReadLine());
+                int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
@@ -84,7 +85,9 @@ namespace ConsoleAppPL
                         }
                         break;
                     case 2:
-                        Console.Write("Create invoice");
+                        Console.WriteLine("+=======================================================================+");
+                        Console.WriteLine("|                              Create Invoice                           |");
+                        Console.WriteLine("|-----------------------------------------------------------------------|");
                         break;
                     case 3:
 
