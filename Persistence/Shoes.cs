@@ -5,7 +5,7 @@ namespace Persistence
         public int ShoeId { set; get; }
         public string ShoeName { set; get; }
         public string ShoePrice { set; get; }
-        public string Brand { set; get; }
+        public string BrandName { set; get; }
         public string ShoeQuanlity { set; get; }
         public string ShoeDesception { set; get; }
 
@@ -19,5 +19,11 @@ namespace Persistence
     {
         public int ColorId { set; get; }
         public string ColorName { set; get; }
+    }
+    public class ShoeDetails{ 
+        public Shoes ShoeId { set; get; }
+        public Sizes SizeId { set; get; }
+        public Colors ColorId { set; get; }
+        public int Quanlity { set; get; }
     }
 }
