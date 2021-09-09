@@ -29,6 +29,8 @@ namespace DAL
                     {
                         staff.Role = 0;
                     }
+                    string name = reader["staff_name"].ToString();
+                    Console.WriteLine("\t\t\t...Wellcome to System "+name+"...");
                     reader.Close();
                 }
                 catch

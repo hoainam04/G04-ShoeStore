@@ -6,7 +6,7 @@ namespace Persistence
         public string ShoeName { set; get; }
         public string ShoePrice { set; get; }
         public string BrandName { set; get; }
-        public string ShoeQuanlity { set; get; }
+        public string ShoeQuantity { set; get; }
         public string ShoeDesception { set; get; }
 
     }

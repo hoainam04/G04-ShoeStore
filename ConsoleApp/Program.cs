@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Persistence;
 using BL;
 
@@ -32,11 +33,9 @@ namespace ConsoleAppPL
                 if (staff.Role <= 0)
                 {
                     Console.WriteLine("Can't Login");
-
                 }
                 else
                 {
-                    Console.WriteLine("\t\t\t...Wellcome to System...");
                     break;
                 }
             }
@@ -68,16 +67,39 @@ namespace ConsoleAppPL
                         switch (choi)
                         {
                             case 1: //search name
+                                string name;
                                 Console.Write("Input Search Name:");
-                                string searchName = Convert.ToString(Console.ReadLine());
+                                name = Convert.ToString(Console.ReadLine());
+                                Shoes shoes = new Shoes() { ShoeName = name };
+                                ShoesBL blname = new ShoesBL();
+                                shoes = blname.SearchByName(shoes);
+                                Console.ReadKey();
                                 break;
                             case 2: //search id
+                                int id;
                                 Console.Write("Input Search Id:");
-                                string searchId = Convert.ToString(Console.ReadLine());
+                                id = Convert.ToInt32(Console.ReadLine());
+                                Shoes shoesid = new Shoes() { ShoeId = id };
+                                ShoesBL blid = new ShoesBL();
+                                shoes = blid.SearchById(shoesid);
+                                if (shoes.ShoeId <= 0)
+                                {
+                                    Console.WriteLine("Not result");
+                                    Console.ReadKey();
+                                }
+                                else
+                                {
+                                    Console.ReadKey();
+                                }
+
                                 break;
                             case 3: //search brand
                                 Console.Write("Input Search Brand:");
-                                string searchBrand = Convert.ToString(Console.ReadLine());
+                                string br = Convert.ToString(Console.ReadLine());
+                                Shoes shoesbr = new Shoes() { BrandName = br };
+                                ShoesBL blbr = new ShoesBL();
+                                shoesbr = blbr.SearchByBrand(shoesbr);
+                                Console.ReadKey();
                                 break;
                             case 4://Exits
                                 break;
