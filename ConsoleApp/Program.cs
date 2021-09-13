@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Persistence;
 using BL;
@@ -20,11 +19,15 @@ namespace ConsoleAppPL
                 string userName;
                 do
                 {
-                    Console.Write("User Name: ");
+                    Console.WriteLine("+------------------------------------------+");
+                    Console.WriteLine("|           ...LOGIN TO SYSTEM...          |");
+                    Console.WriteLine("+------------------------------------------+");
+                    Console.Write("| User Name: ");
                     userName = Console.ReadLine();
-                    Console.Write("Password: ");
+                    Console.WriteLine("+------------------------------------------+");
+                    Console.Write("| Password: ");
                     pass = GetPassword();
-                    Console.WriteLine();
+                    Console.WriteLine("\n+------------------------------------------+");
                     if (pass.Length < 8)
                     {
                         Console.WriteLine("Password must be 8 characters or more");
