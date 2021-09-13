@@ -61,7 +61,7 @@ namespace DAL
             shoe.ShoePrice = reader["shoe_price"].ToString();
             shoe.ShoeQuantity = reader["shoe_quantity"].ToString();
             shoe.ShoeDesception = reader["shoe_desception"].ToString();
-            Console.WriteLine("-------------------------------------");
+            // Console.WriteLine("-------------------------------------");
             Console.WriteLine("| Shoe ID:    " + shoe.ShoeId);
             Console.WriteLine("| Shoe Name:  " + shoe.ShoeName);
             Console.WriteLine("| Shoe Price: " + shoe.ShoePrice);

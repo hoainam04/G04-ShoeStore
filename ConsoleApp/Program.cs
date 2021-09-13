@@ -48,14 +48,14 @@ namespace ConsoleAppPL
             }
             while (true)
             {
-                Console.WriteLine("+============================================================================+");
-                Console.WriteLine("|                                  Menu                                      |");
-                Console.WriteLine("+----------------------------------------------------------------------------+");
-                Console.WriteLine("| 1.Search                                                                   |");
-                Console.WriteLine("| 2.Create invoice                                                           |");
-                Console.WriteLine("| 3.Exit System                                                              |");
-                Console.WriteLine("+============================================================================+");
-                Console.Write("Enter choice: ");
+                Console.WriteLine("+=======================================================================+");
+                Console.WriteLine("|                                  Menu                                 |");
+                Console.WriteLine("+-----------------------------------------------------------------------+");
+                Console.WriteLine("| 1.Search                                                              |");
+                Console.WriteLine("| 2.Create invoice                                                      |");
+                Console.WriteLine("| 3.Exit System                                                         |");
+                Console.WriteLine("+=======================================================================+");
+                Console.Write(" * Enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -71,7 +71,7 @@ namespace ConsoleAppPL
                             Console.WriteLine("| 3.Search brand                                                        |");
                             Console.WriteLine("| 4.Exits Search                                                        |");
                             Console.WriteLine("+-----------------------------------------------------------------------+");
-                            Console.Write("Input choice: ");
+                            Console.Write(" * Input choice: ");
                             choi = Convert.ToInt32(Console.ReadLine());
                             switch (choi)
                             {
