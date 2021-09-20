@@ -11,7 +11,7 @@ namespace ConsoleAppPL
         static void Main(string[] args)
         {
             ShoesBL ibl = new ShoesBL();
-            List<Shoes> lst;
+            List<Shoes> lst = new List<Shoes>();
 
             while (true)
             {
@@ -53,9 +53,9 @@ namespace ConsoleAppPL
                 Console.WriteLine("|                         Shoes Store System - Menu                                |");
                 Console.WriteLine("|──────────────────────────────────────────────────────────────────────────────────|");
                 Console.WriteLine("| 1.Search                                                                         |");
-                Console.WriteLine("| 2.Create invoice                                                                 |");
+                Console.WriteLine("| 2.Invoices                                                                       |");
                 Console.WriteLine("| 3.Exit System                                                                    |");
-                Console.WriteLine("|──────────────────────────────────────────────────────────────────────────────────|");
+                Console.WriteLine("└──────────────────────────────────────────────────────────────────────────────────┘");
                 Console.Write(" * Enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("+──────────────────────────────────────────────────────────────────────────────────+");
@@ -73,7 +73,7 @@ namespace ConsoleAppPL
                             Console.WriteLine("| 3.Search brand                                                                   |");
                             Console.WriteLine("| 4.Show all shoes                                                                 |");
                             Console.WriteLine("| 5.Exits Search                                                                   |");
-                            Console.WriteLine("+──────────────────────────────────────────────────────────────────────────────────+");
+                            Console.WriteLine("└──────────────────────────────────────────────────────────────────────────────────┘");
                             Console.Write(" * Input choice: ");
                             choi = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("+──────────────────────────────────────────────────────────────────────────────────+");
@@ -86,7 +86,7 @@ namespace ConsoleAppPL
                                     shoeName = Convert.ToString(Console.ReadLine());
                                     Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────");
                                     lst = ibl.SearchByName(shoeName);
-                                    if (lst.Count <= 0)
+                                    if (lst == null)
                                     {
                                         Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────");
                                         Console.WriteLine("No results found for Name: " + shoeName);
@@ -110,11 +110,10 @@ namespace ConsoleAppPL
                                         {
                                             Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────");
                                             Console.WriteLine("| Shoe ID: " + i.ShoeId);
-                                            Console.WriteLine("| Shoe Name:  "+ i.ShoeName);
-                                            Console.WriteLine("| Shoe Price: "+ i.ShoePrice+"$");
-                                            Console.WriteLine("| Brand:      "+ i.BrandName);
-                                            Console.WriteLine("| Quantity:   "+ i.ShoeQuantity);
-                                            Console.WriteLine("| MADE IN "+ i.ShoeDesception);
+                                            Console.WriteLine("| Shoe Name:  " + i.ShoeName);
+                                            Console.WriteLine("| Shoe Price: " + i.ShoePrice + "$");
+                                            Console.WriteLine("| Brand:      " + i.BrandName);
+                                            Console.WriteLine("| MADE IN " + i.ShoeDesception);
                                             Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────");
                                             Console.WriteLine("| Size and Color");
                                         }
@@ -137,7 +136,8 @@ namespace ConsoleAppPL
                                     brandName = Convert.ToString(Console.ReadLine());
                                     Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────");
                                     lst = ibl.SearchByBrand(brandName);
-                                    if (lst.Count <= 0)
+                                    // List<Shoes> n= ibl.SearchByBrand(brandName);
+                                    if (lst == null)
                                     {
                                         Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────");
                                         Console.WriteLine(" !!! No results found for Brand: " + brandName);
@@ -146,6 +146,13 @@ namespace ConsoleAppPL
                                     {
                                         Console.WriteLine("\nNumber of results foundt By Brand: " + lst.Count);
                                         Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────");
+                                        Console.WriteLine("┌────┬──────────────────────┬────────────┬────────────┬───────────────┐");
+                                        Console.WriteLine("| ID | Name                 | Brand      | Price      | Description   |");
+                                        Console.WriteLine("├────┼──────────────────────┼────────────┼────────────┼───────────────┤");
+                                        // Shoes n = ibl.SearchByBrand(brandName);
+                                        // Console.WriteLine("| {0,-2} | {1,-20} | {2,-10} | {3,-8}VND| Made In {5,-5} |",n.ShoeId,n.ShoeName,shoe.BrandName,shoe.ShoePrice,shoe.ShoeDesception);
+                                        Console.WriteLine("└────┴──────────────────────┴────────────┴────────────┴───────────────┘");
+
                                     }
 
                                     Console.WriteLine("\n    Press Enter key to back Search menu...");
@@ -162,9 +169,39 @@ namespace ConsoleAppPL
                         } while (choi != 5);
                         break;
                     case 2:
-                        Console.WriteLine("+=======================================================================+");
-                        Console.WriteLine("|               Shoes Store System - Invoice                           |");
-                        Console.WriteLine("|-----------------------------------------------------------------------|");
+                        int c;
+                        do
+                        {
+                            Console.WriteLine("┌──────────────────────────────────────────────────────────────────────────────────┐");
+                            Console.WriteLine("|                     Shoes Store System - Invoices                                |");
+                            Console.WriteLine("|──────────────────────────────────────────────────────────────────────────────────|");
+                            Console.WriteLine("| 1. Create new invoice                                                            |");
+                            Console.WriteLine("| 2. Invoices History                                                              |");
+                            Console.WriteLine("| 3. Exits Invoices                                                                |");
+                            Console.WriteLine("|──────────────────────────────────────────────────────────────────────────────────|");
+                            Console.Write("* Your Choice: ");
+                            c = Convert.ToInt32(Console.ReadLine());
+                            switch (c)
+                            {
+                                case 1:
+                                    Console.WriteLine("┌──────────────────────────────────────────────────────────────────────────────────┐");
+                                    Console.WriteLine("|                     Shoes Store System - Invoices                                |");
+                                    Console.WriteLine("|──────────────────────────────────────────────────────────────────────────────────|");
+                                    Console.Write("| Customer Name: ");
+                                    break;
+                                case 2:
+                                    Console.WriteLine("┌──────────────────────────────────────────────────────────────────────────────────┐");
+                                    Console.WriteLine("|                     Shoes Store System - Invoices                                |");
+                                    Console.WriteLine("|──────────────────────────────────────────────────────────────────────────────────|");
+                                    Console.Write("| Customer Phone Number: ");
+                                    break;
+                                case 3:
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        } while (c != 3);
                         break;
                     case 3:
 

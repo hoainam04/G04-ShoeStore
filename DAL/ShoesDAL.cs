@@ -21,7 +21,7 @@ namespace DAL
             try
             {
                 connection.Open();
-                query = @"select shoe_id, shoe_name, shoe_price, brand_name, shoe_quantity,
+                query = @"select shoe_id, shoe_name, shoe_price, brand_name,
                             ifnull(shoe_desception, '') as shoe_desception 
                             from Shoes where shoe_id = @shoeId;";
                 MySqlCommand command = new MySqlCommand(query, connection);
@@ -47,22 +47,8 @@ namespace DAL
             shoe.ShoeId = reader.GetInt32("shoe_id");
             shoe.ShoeName = reader.GetString("shoe_name");
             shoe.BrandName = reader.GetString("brand_name");
-            shoe.ShoePrice = reader["shoe_price"].ToString();
-            shoe.ShoeQuantity = reader["shoe_quantity"].ToString();
-            shoe.ShoeDesception = reader["shoe_desception"].ToString();
-            return shoe;
-        }
-        internal Shoes GetShoeMany(MySqlDataReader reader)
-        {
-            Shoes shoe = new Shoes();
-            shoe.ShoeId = reader.GetInt32("shoe_id");
-            shoe.ShoeName = reader.GetString("shoe_name");
-            shoe.BrandName = reader.GetString("brand_name");
-            shoe.ShoePrice = reader["shoe_price"].ToString();
-            shoe.ShoeQuantity = reader["shoe_quantity"].ToString();
-            shoe.ShoeDesception = reader["shoe_desception"].ToString();
-            // Console.WriteLine("-------------------------------------");
-            Console.WriteLine("| {0,-2} | {1,-20} | {2,-10} | {3,-10}$| {4,-10} | Made In {5,-5} |",shoe.ShoeId,shoe.ShoeName,shoe.BrandName,shoe.ShoePrice,shoe.ShoeQuantity,shoe.ShoeDesception);
+            shoe.ShoePrice = reader.GetDouble("shoe_price");
+            shoe.ShoeDesception = reader.GetString("shoe_desception");
             return shoe;
         }
 
@@ -79,29 +65,24 @@ namespace DAL
                         query = @"select * from Shoes";
                         break;
                     case ShoeFilter.FILTER_BY_SHOE_NAME:
-                        query = @"select shoe_id, shoe_name, shoe_price, brand_name,shoe_quantity,
-                                    ifnull(shoe_desception, '') as shoe_desception 
-                                     from Shoes where shoe_name like concat('%',@shoeName,'%');";
+                        query = @"select * from Shoes where shoe_name like concat('%',@shoeName,'%');";
                         command.Parameters.AddWithValue("@shoeName", shoe.ShoeName);
                         break;
                     case ShoeFilter.FILTER_BY_BRAND_NAME:
-                        query = @"select shoe_id, shoe_name, shoe_price, brand_name,shoe_quantity,
-                                    ifnull(shoe_desception, '') as shoe_desception 
-                                     from Shoes where brand_name like concat('%',@brandName,'%');";
+                        query = @"select * from Shoes where brand_name like concat('%',@brandName,'%');";
                         command.Parameters.AddWithValue("@brandName", shoe.BrandName);
                         break;
                 }
                 command.CommandText = query;
                 MySqlDataReader reader = command.ExecuteReader();
                 lst = new List<Shoes>();
-                Console.WriteLine("┌────┬──────────────────────┬────────────┬────────────┬────────────┬───────────────┐");
-                Console.WriteLine("| ID | Name                 | Brand      | Price      | Quantity   | Description   |");
-                Console.WriteLine("├────┼──────────────────────┼────────────┼────────────┼────────────┼───────────────┤");
+                Console.WriteLine("┌────┬──────────────────────┬────────────┬────────────┬───────────────┐");
+                Console.WriteLine("| ID | Name                 | Brand      | Price      | Description   |");
+                Console.WriteLine("├────┼──────────────────────┼────────────┼────────────┼───────────────┤");
                 while (reader.Read())
                 {
-                    lst.Add(GetShoeMany(reader));
+                    lst.Add(GetShoe(reader));
                 }
-                Console.WriteLine("└────┴──────────────────────┴────────────┴────────────┴────────────┴───────────────┘");
                 reader.Close();
             }
             catch { }
