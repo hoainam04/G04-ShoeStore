@@ -19,15 +19,15 @@ namespace ConsoleAppPL
                 string userName;
                 do
                 {
-                    Console.WriteLine("+-----------------------------------------------------+");
-                    Console.WriteLine("|           ...LOGIN TO SYSTEM SHOE STORE...          |");
-                    Console.WriteLine("+-----------------------------------------------------+");
+                    Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+                    Console.WriteLine("|                                  ...LOGIN TO SHOE STORE SYSTEM...                               |");
+                    Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                     Console.Write("| User Name: ");
                     userName = Console.ReadLine();
-                    Console.WriteLine("+------------------------------------------+");
+                    Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                     Console.Write("| Password: ");
                     pass = GetPassword();
-                    Console.WriteLine("\n+------------------------------------------+");
+                    Console.WriteLine("\n└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
                     if (pass.Length < 8)
                     {
                         Console.WriteLine("Password must be 8 characters or more");
@@ -48,14 +48,14 @@ namespace ConsoleAppPL
             }
             while (true)
             {
-                Console.WriteLine("+=======================================================================+");
-                Console.WriteLine("|                     Shoe Store System-Menu                            |");
-                Console.WriteLine("+-----------------------------------------------------------------------+");
-                Console.WriteLine("| 1.Search                                                              |");
-                Console.WriteLine("| 2.Invoices                                                            |");
-                Console.WriteLine("| 3.Exit System                                                         |");
-                Console.WriteLine("+=======================================================================+");
-                Console.Write(" * Enter choice: ");
+                Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+                Console.WriteLine("|                                    Shoe Store System-Menu                                       |");
+                Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+                Console.WriteLine("| 1.Search                                                                                        |");
+                Console.WriteLine("| 2.Invoices                                                                                      |");
+                Console.WriteLine("| 3.Exit System                                                                                   |");
+                Console.WriteLine("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+                Console.Write(" # Your choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -63,16 +63,16 @@ namespace ConsoleAppPL
                         int choi;
                         do
                         {
-                            Console.WriteLine("+=======================================================================+");
-                            Console.WriteLine("|                   Shoe Store System - Search                          |");
-                            Console.WriteLine("|-----------------------------------------------------------------------|");
-                            Console.WriteLine("| 1.Search Name                                                         |");
-                            Console.WriteLine("| 2.Search Id                                                           |");
-                            Console.WriteLine("| 3.Search Brand                                                        |");
-                            Console.WriteLine("| 4.Show All Shoes                                                      |");
-                            Console.WriteLine("| 5.Exits Search                                                        |");
-                            Console.WriteLine("+-----------------------------------------------------------------------+");
-                            Console.Write(" * Input choice: ");
+                            Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+                            Console.WriteLine("|                                   Shoe Store System - Search                                    |");
+                            Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+                            Console.WriteLine("| 1.Search Name                                                                                   |");
+                            Console.WriteLine("| 2.Search Id                                                                                     |");
+                            Console.WriteLine("| 3.Search Brand                                                                                  |");
+                            Console.WriteLine("| 4.Show All Shoes                                                                                |");
+                            Console.WriteLine("| 5.Exits Search                                                                                  |");
+                            Console.WriteLine("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+                            Console.Write(" # Your choice: ");
                             choi = Convert.ToInt32(Console.ReadLine());
                             switch (choi)
                             {
@@ -80,20 +80,22 @@ namespace ConsoleAppPL
                                     string shoeName;
                                     Console.Write("Input Search Name: ");
                                     shoeName = Convert.ToString(Console.ReadLine());
-                                    Console.WriteLine("-------------------------------------");
+                                    Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                                     lst = ibl.SearchByName(shoeName);
                                     if (lst.Count <= 0)
                                     {
-                                        Console.WriteLine("-------------------------------------");
+                                        Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+
                                         Console.WriteLine("No results found for " + shoeName);
 
                                     }
                                     else
                                     {
                                         Console.WriteLine("\nFound " + lst.Count + " results with the Name: " + shoeName);
-                                        Console.WriteLine("-------------------------------------");
+                                        Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+
                                     }
-                                    Console.WriteLine("\n    Press Enter key to back menu...");
+                                    Console.WriteLine("\n    Press Enter key to back search menu...");
                                     Console.ReadKey();
                                     break;
                                 case 2: //search id
@@ -104,19 +106,21 @@ namespace ConsoleAppPL
                                         Shoes i = ibl.SearchById(shoeId);
                                         if (i != null)
                                         {
-                                            Console.WriteLine("-------------------------------------");
+                                            Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+
                                             //Console.WriteLine("Item ID: " + i.ShoeId);
                                             Console.WriteLine("| Shoe Name:  " + i.ShoeName);
-                                            Console.WriteLine("| Shoe Price: " + i.ShoePrice +"VND");
+                                            Console.WriteLine("| Shoe Price: " + i.ShoePrice + "VND");
                                             Console.WriteLine("| Brand:      " + i.BrandName);
                                             Console.WriteLine("| Quantity: " + i.ShoeQuantity);
                                             Console.WriteLine("| MADE IN " + i.ShoeDesception);
-                                            Console.WriteLine("-------------------------------------");
+                                            Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+
                                             Console.WriteLine("Size and Color");
                                         }
                                         else
                                         {
-                                            Console.WriteLine("-------------------------------------");
+                                            Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                                             Console.WriteLine("No results found for ID: " + shoeId);
                                         }
                                     }
@@ -124,27 +128,27 @@ namespace ConsoleAppPL
                                     {
                                         Console.WriteLine("Your Choose is wrong!");
                                     }
-                                    Console.WriteLine("\n    Press Enter key to back menu...");
+                                    Console.WriteLine("\n    Press Enter key to back search menu...");
                                     Console.ReadLine();
                                     break;
                                 case 3: //search brand
                                     string brandName;
                                     Console.Write("Input Search Brand: ");
                                     brandName = Convert.ToString(Console.ReadLine());
-                                    Console.WriteLine("-------------------------------------");
+                                    Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                                     lst = ibl.SearchByBrand(brandName);
                                     if (lst.Count <= 0)
                                     {
-                                        Console.WriteLine("-------------------------------------");
+                                        Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                                         Console.WriteLine("No results found for " + brandName);
                                     }
                                     else
                                     {
                                         Console.WriteLine("\nFound " + lst.Count + " results with the Brand: " + brandName);
-                                        Console.WriteLine("-------------------------------------");
+                                        Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                                     }
 
-                                    Console.WriteLine("\n    Press Enter key to back menu...");
+                                    Console.WriteLine("\n    Press Enter key to back search menu...");
                                     Console.ReadKey();
                                     break;
                                 case 4://Show All
@@ -158,31 +162,32 @@ namespace ConsoleAppPL
                         } while (choi != 5);
                         break;
                     case 2:
-                    int a;
-                    do{
-                        Console.WriteLine("+=======================================================================+");
-                        Console.WriteLine("|               Shoe Stors System - Invoice                             |");
-                        Console.WriteLine("|-----------------------------------------------------------------------|");
-                        Console.WriteLine("|1.Create Invoice                                                       |");
-                        Console.WriteLine("|2.Invoice History                                                      |");
-                        Console.WriteLine("|3.Exit                                                                 |");
-                        Console.WriteLine("+=======================================================================+");
-                        Console.Write("# Your Choice: ");
-                        a = Convert.ToInt32(Console.ReadLine());
-                        switch (a)
+                        int a;
+                        do
                         {
-                            case 1://Create Invoice
-                            Console.ReadKey();
-                            break;
-                            
-                            case 2:
-                            Console.ReadKey();
-                            break;
+                            Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+                            Console.WriteLine("|                                  Shoe Stors System - Invoice                                    |");
+                            Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+                            Console.WriteLine("|1.Create Invoice                                                                                 |");
+                            Console.WriteLine("|2.Invoice History                                                                                |");
+                            Console.WriteLine("|3.Exit                                                                                           |");
+                            Console.WriteLine("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+                            Console.Write("# Your Choice: ");
+                            a = Convert.ToInt32(Console.ReadLine());
+                            switch (a)
+                            {
+                                case 1://Create Invoice
+                                    Console.ReadKey();
+                                    break;
 
-                            default:
-                            break;
-                        }
-                     } while(a!=3);
+                                case 2:
+                                    Console.ReadKey();
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        } while (a != 3);
                         break;
                     case 3:
 
