@@ -19,9 +19,9 @@ namespace ConsoleAppPL
                 string userName;
                 do
                 {
-                    Console.WriteLine("+------------------------------------------+");
-                    Console.WriteLine("|           ...LOGIN TO SYSTEM...          |");
-                    Console.WriteLine("+------------------------------------------+");
+                    Console.WriteLine("+-----------------------------------------------------+");
+                    Console.WriteLine("|           ...LOGIN TO SYSTEM SHOE STORE...          |");
+                    Console.WriteLine("+-----------------------------------------------------+");
                     Console.Write("| User Name: ");
                     userName = Console.ReadLine();
                     Console.WriteLine("+------------------------------------------+");
@@ -49,10 +49,10 @@ namespace ConsoleAppPL
             while (true)
             {
                 Console.WriteLine("+=======================================================================+");
-                Console.WriteLine("|                                  Menu                                 |");
+                Console.WriteLine("|                     Shoe Store System-Menu                            |");
                 Console.WriteLine("+-----------------------------------------------------------------------+");
                 Console.WriteLine("| 1.Search                                                              |");
-                Console.WriteLine("| 2.Create invoice                                                      |");
+                Console.WriteLine("| 2.Invoices                                                            |");
                 Console.WriteLine("| 3.Exit System                                                         |");
                 Console.WriteLine("+=======================================================================+");
                 Console.Write(" * Enter choice: ");
@@ -64,12 +64,13 @@ namespace ConsoleAppPL
                         do
                         {
                             Console.WriteLine("+=======================================================================+");
-                            Console.WriteLine("|                              Search                                   |");
+                            Console.WriteLine("|                   Shoe Store System - Search                          |");
                             Console.WriteLine("|-----------------------------------------------------------------------|");
-                            Console.WriteLine("| 1.Search name                                                         |");
-                            Console.WriteLine("| 2.Search id                                                           |");
-                            Console.WriteLine("| 3.Search brand                                                        |");
-                            Console.WriteLine("| 4.Exits Search                                                        |");
+                            Console.WriteLine("| 1.Search Name                                                         |");
+                            Console.WriteLine("| 2.Search Id                                                           |");
+                            Console.WriteLine("| 3.Search Brand                                                        |");
+                            Console.WriteLine("| 4.Show All Shoes                                                      |");
+                            Console.WriteLine("| 5.Exits Search                                                        |");
                             Console.WriteLine("+-----------------------------------------------------------------------+");
                             Console.Write(" * Input choice: ");
                             choi = Convert.ToInt32(Console.ReadLine());
@@ -84,12 +85,12 @@ namespace ConsoleAppPL
                                     if (lst.Count <= 0)
                                     {
                                         Console.WriteLine("-------------------------------------");
-                                        Console.WriteLine("There is no item with id " + shoeName);
+                                        Console.WriteLine("No results found for " + shoeName);
 
                                     }
                                     else
                                     {
-                                        Console.WriteLine("\nItem Count By Name: " + lst.Count);
+                                        Console.WriteLine("\nFound " + lst.Count + " results with the Name: " + shoeName);
                                         Console.WriteLine("-------------------------------------");
                                     }
                                     Console.WriteLine("\n    Press Enter key to back menu...");
@@ -106,17 +107,17 @@ namespace ConsoleAppPL
                                             Console.WriteLine("-------------------------------------");
                                             //Console.WriteLine("Item ID: " + i.ShoeId);
                                             Console.WriteLine("| Shoe Name:  " + i.ShoeName);
-                                            Console.WriteLine("| Shoe Price: " + i.ShoePrice);
+                                            Console.WriteLine("| Shoe Price: " + i.ShoePrice +"VND");
                                             Console.WriteLine("| Brand:      " + i.BrandName);
                                             Console.WriteLine("| Quantity: " + i.ShoeQuantity);
                                             Console.WriteLine("| MADE IN " + i.ShoeDesception);
                                             Console.WriteLine("-------------------------------------");
-                                            Console.WriteLine("Do you want to show Size and Color ???");
+                                            Console.WriteLine("Size and Color");
                                         }
                                         else
                                         {
                                             Console.WriteLine("-------------------------------------");
-                                            Console.WriteLine("There is no item with id " + shoeId);
+                                            Console.WriteLine("No results found for ID: " + shoeId);
                                         }
                                     }
                                     else
@@ -135,27 +136,53 @@ namespace ConsoleAppPL
                                     if (lst.Count <= 0)
                                     {
                                         Console.WriteLine("-------------------------------------");
-                                        Console.WriteLine("There is no item with " + brandName);
+                                        Console.WriteLine("No results found for " + brandName);
                                     }
                                     else
                                     {
-                                        Console.WriteLine("\nResult Count By Brand: " + lst.Count);
+                                        Console.WriteLine("\nFound " + lst.Count + " results with the Brand: " + brandName);
                                         Console.WriteLine("-------------------------------------");
                                     }
 
                                     Console.WriteLine("\n    Press Enter key to back menu...");
                                     Console.ReadKey();
                                     break;
-                                case 4://Exits
+                                case 4://Show All
+                                    lst = ibl.GetAll();
+                                    Console.ReadLine();
+                                    break;
+                                case 5://
                                     break;
 
                             }
-                        } while (choi == 3);
+                        } while (choi != 5);
                         break;
                     case 2:
+                    int a;
+                    do{
                         Console.WriteLine("+=======================================================================+");
-                        Console.WriteLine("|                              Create Invoice                           |");
+                        Console.WriteLine("|               Shoe Stors System - Invoice                             |");
                         Console.WriteLine("|-----------------------------------------------------------------------|");
+                        Console.WriteLine("|1.Create Invoice                                                       |");
+                        Console.WriteLine("|2.Invoice History                                                      |");
+                        Console.WriteLine("|3.Exit                                                                 |");
+                        Console.WriteLine("+=======================================================================+");
+                        Console.Write("# Your Choice: ");
+                        a = Convert.ToInt32(Console.ReadLine());
+                        switch (a)
+                        {
+                            case 1://Create Invoice
+                            Console.ReadKey();
+                            break;
+                            
+                            case 2:
+                            Console.ReadKey();
+                            break;
+
+                            default:
+                            break;
+                        }
+                     } while(a!=3);
                         break;
                     case 3:
 
