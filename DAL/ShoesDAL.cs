@@ -21,7 +21,7 @@ namespace DAL
             try
             {
                 connection.Open();
-                query = @"select shoe_id, shoe_name, shoe_price, brand_name, shoe_quantity,
+                query = @"select shoe_id, shoe_name, shoe_price, brand_name,
                             ifnull(shoe_desception, '') as shoe_desception 
                             from Shoes where shoe_id = @shoeId;";
                 MySqlCommand command = new MySqlCommand(query, connection);
@@ -106,7 +106,7 @@ namespace DAL
                 Console.WriteLine("├────────────────────────────────────────────────────────────────────────────────────────────────┤");
                 while (reader.Read())
                 {
-                    lst.Add(GetShoeMany(reader));
+                    lst.Add(GetShoe(reader));
                 }
                 reader.Close();
                 Console.WriteLine("└────────────────────────────────────────────────────────────────────────────────────────────────┘");
