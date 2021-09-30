@@ -177,11 +177,53 @@ namespace ConsoleAppPL
                             switch (a)
                             {
                                 case 1://Create Invoice
+                                    string name;
+                                    int phone;
+                                    string address;
+                                    Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+                                    Console.WriteLine("| Input Customer Information");
+                                    Console.Write("# Name: ");
+                                    name = Convert.ToString(Console.ReadLine());
+                                    Console.Write("# Phone: ");
+                                    phone = Convert.ToInt32(Console.ReadLine());
+                                    Console.Write("# Address: ");
+                                    address = Convert.ToString(Console.ReadLine());
+                                    Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+
                                     Console.ReadKey();
                                     break;
 
                                 case 2:
-                                    Console.ReadKey();
+                                    int i;
+                                    do
+                                    {
+
+                                        Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+                                        Console.WriteLine("|                            Shoe Store System - Invoice History                                  |");
+                                        Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+                                        Console.WriteLine("| 1.Search by invoice no                                                                          |");
+                                        Console.WriteLine("| 2.Search by phone number                                                                        |");
+                                        Console.WriteLine("| 3.Exit invoice history                                                                          |");
+                                        Console.WriteLine("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+                                        Console.Write("| #Your choice:");
+                                        i = Convert.ToInt32(Console.ReadLine());
+                                        switch (i)
+                                        {
+                                            case 1://search by invoice no
+                                                break;
+
+                                            case 2://search by phone number
+                                                int p;
+                                                Console.Write("Input Customer Phone Number: ");
+                                                p = Convert.ToInt32(Console.ReadLine());
+                                                Console.ReadKey();
+                                                break;
+                                            case 3://exit
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    } while (i != 3);
                                     break;
 
                                 default:

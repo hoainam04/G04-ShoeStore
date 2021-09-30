@@ -1,4 +1,5 @@
 CREATE DATABASE NDShoeStore;
+drop database ndshoestore;
 
 USE NDShoeStore;
 
@@ -24,19 +25,21 @@ CREATE TABLE Customers(
 -- invoices
 CREATE TABLE Invoices(
 	invoice_no int auto_increment primary key,
-    invoice_date datetime,
-    invoice_status nvarchar(50)
+    customer_id int,
+    invoice_date datetime default now() not null,
+    invoice_status nvarchar(50),
+    constraint fk_Invoices_Customers foreign key(customer_id) references Customers(customer_id)
 );
 
 -- sizes
 CREATE TABLE Sizes(
-	size_id int primary key,
+	size_id int auto_increment primary key,
     size_number int
 );
 
 -- color
 CREATE TABLE Colors(
-	color_id int primary key,
+	color_id int auto_increment primary key,
     color_name nvarchar(50)
 );
 
@@ -67,64 +70,62 @@ CREATE TABLE InvoiceDetails(
 	invoice_no int ,
     shoe_id int ,
     amount int,
+    shoe_price double,
     foreign key (shoe_id) references Shoes(shoe_id),
     foreign key (invoice_no) references Invoices(invoice_no),
     primary key (invoice_no, shoe_id)
 );
 
+delimiter $$
+create procedure sp_createCustomer(IN customerName varchar(50),IN customerPhone int ,IN customerAddress varchar(50), OUT customerId int)
+begin
+	insert into Customers(customer_name,customer_phone,customer_address) values (customerName,customerPhone ,customerAddress); 
+    select max(customer_id) into customerId from Customers;
+end $$
+delimiter ;
+call sp_createCustomer('Bill Gr','843234324','TPHCM',@cusId);
+select @cusId;
 
-INSERT INTO Shoes VALUES (1, 'Jordan 1', '1.000', 'Nike', '12', 'USA' );
-INSERT INTO Shoes VALUES (2, 'Triple S', '100', 'Baleciaga', '100', 'USA' );
-INSERT INTO Shoes VALUES (3, 'UrBas The Gang', '999', 'Vintas', '120', 'VN' );
-INSERT INTO Shoes VALUES (4, 'GD limitted', '1000', 'Nike', '9', 'KR' );
-INSERT INTO Shoes VALUES (5, 'Jordan 4', '1000', 'Nike', '1200', 'USA' );
-INSERT INTO Shoes VALUES (6, 'Classic', '999', 'Converse', '999', 'USA' );
-INSERT INTO Shoes VALUES (7, 'Old Skool', '1000', 'Van', '100', 'USA' );
-INSERT INTO Shoes VALUES (8, 'JD Off White', '1299', 'Nike', '50', 'USA' );
-INSERT INTO Shoes VALUES (9, 'Off White 1', '1299', 'Van', '50', 'USA' );
-INSERT INTO Shoes VALUES (10, 'PG1', '1299', 'Nike', '50', 'USA' );
+INSERT INTO Shoes(shoe_name,shoe_price,brand_name,shoe_quantity,shoe_desception) VALUES 
+('Jordan 1', '799000', 'Nike', '999', 'USA' ),('Triple S', '999000', 'Baleciaga', '999', 'USA' ),
+('UrBas The Gang', '399000', 'Vintas', '999', 'VN' ),('GD limitted', '1990000', 'Nike', '9', 'KR' ),
+('Jordan 4', '699000', 'Nike', '200', 'USA' ),('Classic', '799000', 'Converse', '999', 'USA' ),
+('Old Skool', '599000', 'Van', '100', 'USA' ),('JD Off White', '1299000', 'Nike', '150', 'USA' ),
+('Off White 1', '1299000', 'Van', '150', 'USA' ),('PG 1', '1299000', 'Nike', '150', 'USA' ),
+('Saigon 1980s NE','490000','Vintas','500','VN'),('Super Star','490000','Adidas','200','JP'),
+('Ultra Boost 20B','2050000','Adidas','321','JP'),('EQT 91.18','890000','Adidas','213','JP'),('Bumper Gum Mule','490000','Basas','500','VN');
 
-INSERT INTO sizes VALUES ('1','28');
-INSERT INTO sizes VALUES ('2','29');
-INSERT INTO sizes VALUES ('3','30');
-INSERT INTO sizes VALUES ('4','31');
-INSERT INTO sizes VALUES ('5','32');
-INSERT INTO sizes VALUES ('6','34');
-INSERT INTO sizes VALUES ('7','35');
-INSERT INTO sizes VALUES ('8','36');
-INSERT INTO sizes VALUES ('9','37');
-INSERT INTO sizes VALUES ('10','38');
-INSERT INTO sizes VALUES ('11','39');
-INSERT INTO sizes VALUES ('12','40');
-INSERT INTO sizes VALUES ('13','41');
-INSERT INTO sizes VALUES ('14','42');
-INSERT INTO sizes VALUES ('15','43');
-INSERT INTO sizes VALUES ('16','44');
+INSERT INTO sizes(size_number) VALUES 
+('31'),('32'),('33'),('34'),('35'),('36'),('37'),('38'),('39'),('40'),('41'),('42'),('43'),('44');
 
-INSERT INTO colors VALUES ('1','red');
-INSERT INTO colors VALUES ('2','blue');
-INSERT INTO colors VALUES ('3','black');
-INSERT INTO colors VALUES ('4','yellow');
-INSERT INTO colors VALUES ('5','pink');
-INSERT INTO colors VALUES ('6','white');
-INSERT INTO colors VALUES ('7','purple');
-INSERT INTO colors VALUES ('8','gray');
-INSERT INTO colors VALUES ('9','brown');
-INSERT INTO colors VALUES ('10','black and white');
-INSERT INTO colors VALUES ('11','red and white');
-INSERT INTO colors VALUES ('12','blue and white');
-INSERT INTO colors VALUES ('13','white and gray');
-INSERT INTO colors VALUES ('14','special');
-INSERT INTO colors VALUES ('15','Other');
+INSERT INTO colors(color_name) VALUES ('red'),('blue'),('black'),
+('yellow'),('pink'),('white'),('purple'),('gray'),('brown'),('black and white'),('red and white'),('blue and white'),('white and gray'),('special');
 
+Insert into ShoesDetails(shoe_id,color_id,size_id,quantity) Values
+-- jd1 black and white  
+('1','10','6','27'),('1','10','7','27'),('1','10','8','27'),('1','10','9','27'),
+('1','10','10','27'),('1','10','11','60'),('1','10','12','27'),('1','10','13','27'),('1','10','14','28'),
+-- jd1 red abd white
+('1','11','6','27'),('1','11','7','27'),('1','11','8','27'),('1','11','9','27'),
+('1','11','10','27'),('1','11','11','60'),('1','11','12','27'),('1','11','13','27'),('1','11','14','28'),
+-- jd1 blue  and white
+('1','12','6','27'),('1','12','7','27'),('1','12','8','27'),('1','12','9','27'),
+('1','12','10','27'),('1','12','11','60'),('1','12','12','27'),('1','12','13','27'),('1','12','14','28');
+
+select shoe_name,color_name,size_number,quantity
+from shoes,ShoesDetails,Sizes,Colors where Shoes.shoe_id = ShoesDetails.shoe_id
+ and Sizes.size_id= ShoesDetails.size_id
+ and Colors.color_id= ShoesDetails.color_id;
+
+insert into customers(customer_name,customer_phone,customer_address) values('Phung Thanh Do','0962358243','Cao Bang');
 
 CREATE USER IF NOT EXISTS 'hoainam'@'localhost' identified by 'hoainam04';
 grant all on ndshoestore.* to 'hoainam'@'localhost';
 
-insert into Staffs(staff_name, user_name, user_pass, role) values
-				('HoaiNam', 'hoainam', 'e78a1f1f50970cdea9956ff3c1867a2f',1);
-insert into Staffs(staff_name, user_name, user_pass, role) values
-				('TranDat', 'trandat', '2ea25ca22051274aa3a3240889cea233',2);
+insert into Staffs(staff_name, user_name, user_pass) values
+				('Hoai Nam', 'hoainam', 'e78a1f1f50970cdea9956ff3c1867a2f');
+insert into Staffs(staff_name, user_name, user_pass) values
+				('Tran Dat', 'trandat', '2ea25ca22051274aa3a3240889cea233');
                 
 Select * from Staffs;
 

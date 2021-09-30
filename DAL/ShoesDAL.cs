@@ -14,7 +14,7 @@ namespace DAL
     public class ShoesDAL
     {
         private string query;
-        private MySqlConnection connection = DbHelper.GetConnection();
+        private MySqlConnection connection = DbConfig.GetConnection();
         public Shoes GetbyID(int shoeId)
         {
             Shoes shoe = null;
@@ -47,9 +47,9 @@ namespace DAL
             shoe.ShoeId = reader.GetInt32("shoe_id");
             shoe.ShoeName = reader.GetString("shoe_name");
             shoe.BrandName = reader.GetString("brand_name");
-            shoe.ShoePrice = reader["shoe_price"].ToString();
-            shoe.ShoeQuantity = reader["shoe_quantity"].ToString();
-            shoe.ShoeDesception = reader["shoe_desception"].ToString();
+            shoe.ShoePrice = reader.GetDouble("shoe_price");
+            shoe.ShoeQuantity = reader.GetInt32("shoe_quantity");
+            shoe.ShoeDesception = reader.GetString("shoe_desception");
             return shoe;
         }
         internal Shoes GetShoeMany(MySqlDataReader reader)
@@ -58,9 +58,9 @@ namespace DAL
             shoe.ShoeId = reader.GetInt32("shoe_id");
             shoe.ShoeName = reader.GetString("shoe_name");
             shoe.BrandName = reader.GetString("brand_name");
-            shoe.ShoePrice = reader["shoe_price"].ToString();
-            shoe.ShoeQuantity = reader["shoe_quantity"].ToString();
-            shoe.ShoeDesception = reader["shoe_desception"].ToString();
+            shoe.ShoePrice = reader.GetDouble("shoe_price");
+            shoe.ShoeQuantity = reader.GetInt32("shoe_quantity");
+            shoe.ShoeDesception = reader.GetString("shoe_desception");
             // Console.WriteLine("| Shoe ID:    " + shoe.ShoeId);
             // Console.WriteLine("| Shoe Name:  " + shoe.ShoeName);
             // Console.WriteLine("| Shoe Price: " + shoe.ShoePrice);

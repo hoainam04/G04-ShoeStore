@@ -2,11 +2,11 @@ namespace Persistence
 {
     public class Shoes
     {
-        public int ShoeId { set; get; }
+        public int? ShoeId { set; get; }
         public string ShoeName { set; get; }
-        public string ShoePrice { set; get; }
+        public double ShoePrice { set; get; }
         public string BrandName { set; get; }
-        public string ShoeQuantity { set; get; }
+        public int? ShoeQuantity { set; get; }
         public string ShoeDesception { set; get; }
         public override bool Equals(object obj)
         {
