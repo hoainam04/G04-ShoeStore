@@ -19,7 +19,6 @@ namespace Persistence
             }
             return false;
         }
-
         public override int GetHashCode()
         {
             return StaffId.GetHashCode();
