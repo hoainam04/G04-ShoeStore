@@ -11,21 +11,11 @@ namespace DALTest
     {
         private ShoesDAL dal = new ShoesDAL();
         private Shoes shoe = new Shoes();
-<<<<<<< HEAD
-        
-=======
-        // private List<Shoes> lsdal = new List<Shoes>();
->>>>>>> 24f2cf5f1bd5fb74bb32717abf9c23fe6675ab5e
         private const int GET_ALL = 0;
         private const int FILTER_BY_SHOE_NAME = 1;
         private const int FILTER_BY_BRAND_NAME = 2;
 
-<<<<<<< HEAD
-       
-=======
-
->>>>>>> 24f2cf5f1bd5fb74bb32717abf9c23fe6675ab5e
-        [Theory]
+ [Theory]
         [InlineData(1)]
         [InlineData(2)]
         [InlineData(3)]
@@ -36,16 +26,12 @@ namespace DALTest
         [InlineData(8)]
         [InlineData(9)]
         [InlineData(10)]
-<<<<<<< HEAD
         [InlineData(11)]
         [InlineData(12)]
         [InlineData(13)]
         [InlineData(14)]
         [InlineData(15)]
         public void GetbyIDTest(int shoeId)
-=======
-        public void GetbyIDTest(int shoeId)//,string shoeName)
->>>>>>> 24f2cf5f1bd5fb74bb32717abf9c23fe6675ab5e
         {
             Shoes result = dal.GetbyID(shoeId);
             Assert.True(result != null);
@@ -69,7 +55,6 @@ namespace DALTest
         [InlineData("EQT 91.18")]
         [InlineData("Bumper Gum Mule")]
 
-<<<<<<< HEAD
         public void TestGetname(string name)
         {
             Shoes  shoe = new Shoes(){ ShoeName = name };
@@ -105,17 +90,6 @@ namespace DALTest
                     Assert.Contains(brand.ToLower(),sh.BrandName.ToLower());
                 }
             }
-=======
-
-        public void GetbyNameTest(string shoeName)
-        {
-            Shoes shoe1 = new Shoes() { ShoeName = shoeName };
-            // List<Shoes> result = dal.GetShoes(ShoeFilter.FILTER_BY_SHOE_NAME, shoe1);
-        }
-        public void GetBrandTest(string brandName)
-        {
-            Shoes sh = new Shoes(){BrandName  = brandName};
->>>>>>> 24f2cf5f1bd5fb74bb32717abf9c23fe6675ab5e
         }
     }
 }
