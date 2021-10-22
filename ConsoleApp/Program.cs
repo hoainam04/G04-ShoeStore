@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using Persistence;
 using BL;
@@ -15,6 +16,7 @@ namespace ConsoleAppPL
             SizesColors sc;
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                 Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                 Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -28,6 +30,7 @@ namespace ConsoleAppPL
                 string pass;
                 do
                 {
+                    Console.Clear();
                     Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                     Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                     Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -56,15 +59,26 @@ namespace ConsoleAppPL
                 {
                     Console.WriteLine("Can't Login");
                     Console.ReadLine();
-                    
+
                 }
                 else
                 {
-                    Console.WriteLine("\t\t\t\t WELCOME TO SYSTEM " + staff.StaffName + "");
+                    Console.Clear();
+                    Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+                    Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
+                    Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
+                    Console.WriteLine("|         |__   |     |  |  |   __|__   |  |__   | | | |  |  |    -|   __|  | | | |  |  |         |");
+                    Console.WriteLine("|         |_____|__|__|_____|_____|_____|  |_____| |_| |_____|__|__|_____|  |_|___|____/          |");
+                    Console.WriteLine("|                                                                                                 |");
+                    Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
+                    Console.WriteLine("|                              WELCOME TO SYSTEM {0}                                         |",staff.StaffName);
+                    Console.WriteLine("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+                    Thread.Sleep(2000);
                     // break;
                 }
                 while (true)
                 {
+                    Console.Clear();
                     Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                     Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                     Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -88,6 +102,7 @@ namespace ConsoleAppPL
                                 int choi;
                                 do
                                 {
+                                    Console.Clear();
                                     Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                                     Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                                     Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -111,6 +126,7 @@ namespace ConsoleAppPL
                                         {
                                             case 1: //search name
                                                 string shoeName;
+                                                Console.Clear();
                                                 Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                                                 Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                                                 Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -144,6 +160,7 @@ namespace ConsoleAppPL
                                                 string cn;
                                                 do
                                                 {
+                                                    Console.Clear();
                                                     Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                                                     Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                                                     Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -162,7 +179,7 @@ namespace ConsoleAppPL
                                                         {
                                                             Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                                                             Console.WriteLine("| Shoe Name:  {0}", i.ShoeName);
-                                                            Console.WriteLine("| Shoe Price: {0} VND", i.ShoePrice);
+                                                            Console.WriteLine("| Shoe Price: {0:###,000} VND", i.ShoePrice);
                                                             Console.WriteLine("| Brand:      {0}", i.BrandName);
                                                             Console.WriteLine("| Quantity:   {0}", i.ShoeQuantity);
                                                             Console.WriteLine("| MADE IN {0}", i.ShoeDesception);
@@ -216,6 +233,7 @@ namespace ConsoleAppPL
                                                 string cnue;
                                                 do
                                                 {
+                                                    Console.Clear();
                                                     Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                                                     Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                                                     Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -245,6 +263,8 @@ namespace ConsoleAppPL
                                                 } while (cnue == "y" || cnue == "Y");
                                                 break;
                                             case 4://Show All
+                                                Console.Clear();
+
                                                 Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                                                 Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                                                 Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -333,6 +353,8 @@ namespace ConsoleAppPL
                                 int a;
                                 do
                                 {
+                                    Console.Clear();
+
                                     Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                                     Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                                     Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -352,7 +374,7 @@ namespace ConsoleAppPL
                                         switch (a)
                                         {
                                             case 1://Create Invoice
-
+                                                Console.Clear();
                                                 Invoice invoice = new Invoice();
                                                 string name;
                                                 string customerPhone;
@@ -361,7 +383,7 @@ namespace ConsoleAppPL
                                                 int cId;
                                                 int szId;
                                                 string ca;
-                                                int i= 0;
+                                                int i = 0;
                                                 Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                                                 Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                                                 Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -395,6 +417,7 @@ namespace ConsoleAppPL
                                                 invoice.OrderCustomer = new Customer { CustomerName = name, CustomerPhone = customerPhone, CustomerAddress = address };
                                                 do
                                                 {
+                                                    Console.Clear();
                                                     Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                                                     Console.WriteLine("|                                  SHOE STORE SYSTEM - Invoice                                    |");
                                                     Console.WriteLine("|                                     Create Invoice                                              |");
@@ -457,9 +480,11 @@ namespace ConsoleAppPL
                                                 } while (ca == "Y" || ca == "y");
                                                 if (obl.CreateInvoice(invoice) == true)
                                                 {
+                                                    Console.Clear();
                                                     Console.WriteLine("\t CREATE INVOICE COMPLETE !!!");
                                                     Console.Write("\t Do you want to print the invoice ??? (Y/N)");
                                                     string cni = Console.ReadLine();
+                                                    Console.Clear();
                                                     if (cni == "y" || cni == "Y")
                                                     {
                                                         invoice = obl.PrintInvoice(invoice);
@@ -475,7 +500,7 @@ namespace ConsoleAppPL
                                                 Console.ReadKey();
                                                 break;
                                             case 2:
-
+                                                Console.Clear();
                                                 Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
                                                 Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
                                                 Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
@@ -507,12 +532,20 @@ namespace ConsoleAppPL
                                 } while (a != 3);
                                 break;
                             case 3:
-
+                                Console.Clear();
+                                Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+                                Console.WriteLine("|          _____ _____ _____ _____ _____    _____ _____ _____ _____ _____    _____ ____           |");
+                                Console.WriteLine("|         |   __|  |  |     |   __|   __|  |   __|_   _|     | __  |   __|  |   | |    `          |");
+                                Console.WriteLine("|         |__   |     |  |  |   __|__   |  |__   | | | |  |  |    -|   __|  | | | |  |  |         |");
+                                Console.WriteLine("|         |_____|__|__|_____|_____|_____|  |_____| |_| |_____|__|__|_____|  |_|___|____/          |");
+                                Console.WriteLine("|                                                                                                 |");
+                                Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                                 Console.WriteLine("DO YOU WANT TO EXIT SYSTEM...(Y/N)???");
                                 string o = Console.ReadLine();
                                 if (o == "Y" || o == "y")
                                 {
-                                    Console.Write("GOOD BYE...");
+                                    Console.Write("\t\t\t\t\t\t\tGOOD BYE...");
+                                    Thread.Sleep(2000);
                                     Environment.Exit(0);
                                 }
                                 break;

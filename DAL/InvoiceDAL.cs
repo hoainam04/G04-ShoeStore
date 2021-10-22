@@ -209,7 +209,7 @@ namespace DAL
                     int SizeNumber = read.GetInt32("size_number");
                     invoice.amount = read.GetInt32("amount");
                     invoice.TotalPrice = read.GetDouble("total_price");
-                    Console.WriteLine("| {0,-18} | {1,-10} | {2,-8} | {3,-15} | {4,-6} | {5,-6} | {6,-14} |", ShoeName, BrandName, ShoePrice, ColorName, SizeNumber, invoice.amount, invoice.TotalPrice);
+                    Console.WriteLine("| {0,-18} | {1,-10} | {2,8:###,000} | {3,-15} | {4,-6} | {5,-6} | {6,11:###,000} VND|", ShoeName, BrandName, ShoePrice, ColorName, SizeNumber, invoice.amount, invoice.TotalPrice);
                 }
                 reader.Close();
 
@@ -244,7 +244,7 @@ namespace DAL
                     Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
                     Console.WriteLine("| Total                                                                          |  Total price   |");
                     Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────────────────────────┤");
-                    Console.WriteLine("|                                                                                |  {0,-11}   |", total);
+                    Console.WriteLine("|                                                                                | {0,11:###,000} VND|", total);
 
                 }
             }
