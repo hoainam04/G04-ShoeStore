@@ -15,7 +15,7 @@ namespace DALTest
         private const int FILTER_BY_SHOE_NAME = 1;
         private const int FILTER_BY_BRAND_NAME = 2;
 
- [Theory]
+        [Theory]
         [InlineData(1)]
         [InlineData(2)]
         [InlineData(3)]
@@ -57,15 +57,19 @@ namespace DALTest
 
         public void TestGetname(string name)
         {
-            Shoes  shoe = new Shoes(){ ShoeName = name };
-            List<Shoes> list = dal.GetShoes(ShoeFilter.FILTER_BY_SHOE_NAME,shoe);
-            if (list.Count== 0){
-                Assert.True(list==null);
-            }else{
-                Assert.True(list!=null);
-                Assert.True(list.Count!=0);
-                foreach(Shoes sh in list){
-                    Assert.Contains(name.ToLower(),sh.ShoeName.ToLower());
+            Shoes shoe = new Shoes() { ShoeName = name };
+            List<Shoes> list = dal.GetShoes(ShoeFilter.FILTER_BY_SHOE_NAME, shoe);
+            if (list.Count == 0)
+            {
+                Assert.True(list == null);
+            }
+            else
+            {
+                Assert.True(list != null);
+                Assert.True(list.Count != 0);
+                foreach (Shoes sh in list)
+                {
+                    Assert.Contains(name.ToLower(), sh.ShoeName.ToLower());
                 }
             }
         }
@@ -79,15 +83,19 @@ namespace DALTest
         [InlineData("basas")]
         public void TestGetBrand(string brand)
         {
-            Shoes  shoe = new Shoes(){ BrandName = brand };
-            List<Shoes> list = dal.GetShoes(ShoeFilter.FILTER_BY_BRAND_NAME,shoe);
-            if (list.Count== 0){
-                Assert.True(list==null);
-            }else{
-                Assert.True(list!=null);
-                Assert.True(list.Count!=0);
-                foreach(Shoes sh in list){
-                    Assert.Contains(brand.ToLower(),sh.BrandName.ToLower());
+            Shoes shoe = new Shoes() { BrandName = brand };
+            List<Shoes> list = dal.GetShoes(ShoeFilter.FILTER_BY_BRAND_NAME, shoe);
+            if (list.Count == 0)
+            {
+                Assert.True(list == null);
+            }
+            else
+            {
+                Assert.True(list != null);
+                Assert.True(list.Count != 0);
+                foreach (Shoes sh in list)
+                {
+                    Assert.Contains(brand.ToLower(), sh.BrandName.ToLower());
                 }
             }
         }
