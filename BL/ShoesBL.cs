@@ -10,6 +10,18 @@ namespace BL
         {
             return dal.GetbyID(shoeId);
         }
+        public Shoes GetToInvocie(int sId,int cId,int szId)
+        {
+            return dal.GetToInvocie(sId,cId,szId);
+        }
+        public SizesColors Color(int shoeId)
+        {
+            return dal.Color(shoeId);
+        }
+        public SizesColors GetSizes(int shoeId, int colorId)
+        {
+            return dal.GetSizes(shoeId, colorId);
+        }
         public List<Shoes> GetAll()
         {
             return dal.GetShoes(ShoeFilter.GET_ALL, null);

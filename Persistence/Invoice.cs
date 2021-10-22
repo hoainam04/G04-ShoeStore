@@ -8,15 +8,19 @@ namespace Persistence
     public static class InvoiceStatus
     {
         public const int CREATE_NEW_INVOICE = 1;
-        public const int COMPLETE_NEW_INVOICE = 2;
+        public const int COMPLETE_INVOICE = 2;
         public const int UNPAID = 3;
     }
     public class Invoice
     {
         public int InvoiceNo { set; get; }
         public DateTime InvoiceDate { get; set; }
-        public Customer Customer { get; set; }
+        public Customer OrderCustomer { get; set; }
+        public Shoes Shoes { get; set; }
+        public Staff staff { get; set; }
         public int? Status { get; set; }
+        public int amount { get; set; }
+        public double TotalPrice { set; get; }
         public List<Shoes> ShoesList { get; set; }
 
         public Shoes this[int index]
@@ -32,7 +36,6 @@ namespace Persistence
                 ShoesList.Add(value);
             }
         }
-
         public Invoice()
         {
             ShoesList = new List<Shoes>();

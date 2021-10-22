@@ -8,6 +8,8 @@ namespace Persistence
         public string BrandName { set; get; }
         public int? ShoeQuantity { set; get; }
         public string ShoeDesception { set; get; }
+        public SizesColors sc = new SizesColors();
+       
         public override bool Equals(object obj)
         {
             if (obj is Shoes)
@@ -23,21 +25,34 @@ namespace Persistence
         }
 
     }
-    public class Sizes
+    public class SizesColors
     {
         public int SizeId { set; get; }
-        public string SizeName { set; get; }
-    }
-    public class Colors
-    {
+        public int SizeNumber { set; get; }
         public int ColorId { set; get; }
         public string ColorName { set; get; }
+        public int Quantity { set; get; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is SizesColors)
+            {
+                return ((SizesColors)obj).ColorId.Equals(ColorId);
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return ColorId.GetHashCode();
+        }
     }
-    public class ShoeDetails
-    {
-        public Shoes ShoeId { set; get; }
-        public Sizes SizeId { set; get; }
-        public Colors ColorId { set; get; }
-        public int Quanlity { set; get; }
-    }
+
+    // public class ShoeDetails
+    // {
+    //     public Shoes ShoeId { set; get; }
+    //     public Sizes SizeId { set; get; }
+    //     public Colors ColorId { set; get; }
+    //     public int Quantity { set; get; }
+    // }
 }

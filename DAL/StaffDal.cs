@@ -7,7 +7,7 @@ namespace DAL
 {
     public class StaffDal
     {
-        private MySqlConnection connection = DbConfig.GetConnection();
+        private MySqlConnection connection = DbHelper.GetConnection();
         public Staff Login(Staff staff)
         {
             lock (connection)
@@ -24,13 +24,13 @@ namespace DAL
                     if (reader.Read())
                     {
                         staff.Role = reader.GetInt32("role");
+                        staff.StaffName = reader.GetString("staff_name");
+                        staff.StaffId = reader.GetInt32("staff_id");
                     }
                     else
                     {
                         staff.Role = 0;
                     }
-                    string name = reader["staff_name"].ToString();
-                    Console.WriteLine("\t\t\t\t...Wellcome to System "+name+"...");
                     reader.Close();
                 }
                 catch
@@ -48,7 +48,7 @@ namespace DAL
         public int Insert(Staff staff)
         {
             int? result = null;
-            MySqlConnection connection = DbConfig.GetConnection();
+            MySqlConnection connection = DbHelper.GetConnection();
             string sql = @"insert into Staffs(staff_name, user_name, user_pass, role) values 
                       (@staffName, @userName, @userPass, @role);";
             lock (connection)

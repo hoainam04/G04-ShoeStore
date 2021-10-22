@@ -8,7 +8,7 @@ namespace Persistence
     {
         public int? CustomerId { set; get; }
         public string CustomerName { set; get; }
-        public int CustomerPhone { set; get; }
+        public string CustomerPhone { set; get; }
         public string CustomerAddress { set; get; }
 
         public override bool Equals(object obj)

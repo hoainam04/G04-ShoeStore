@@ -8,16 +8,16 @@ namespace DAL
     public class CustomerDAL
     {
         private string query;
-        private MySqlConnection connection = DbConfig.GetConnection();
+        private MySqlConnection connection = DbHelper.GetConnection();
         private MySqlDataReader reader;
         public CustomerDAL() { }
-        public Customer GetById(int customerId)
+        public Customer GetCustomerById(int customerId)
         {
             Customer c = null;
             try
             {
                 connection.Open();
-                query = @"select customer_id, customer_name,
+                query = @"select customer_id, customer_name,customer_phone,
                         ifnull(customer_address, '') as customer_address
                         from Customers where customer_id=" + customerId + ";";
                 reader = (new MySqlCommand(query, connection)).ExecuteReader();
@@ -34,12 +34,38 @@ namespace DAL
             }
             return c;
         }
+        public Customer GetCustomerByPhone(int customerPhone)
+        {
+            Customer cu = null;
+            try
+            {
+                connection.Open();
+                query = @"select customer_id, customer_name,customer_phone,
+                        ifnull(customer_address, '') as customer_address
+                        from Customers where customer_phone=" + customerPhone + ";";
+                reader = (new MySqlCommand(query, connection)).ExecuteReader();
+                if (reader.Read())
+                {
+                    cu = GetCustomer(reader);
+                }
+                reader.Close();
+
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return cu;
+        }
         internal Customer GetCustomer(MySqlDataReader reader)
         {
             Customer c = new Customer();
             c.CustomerId = reader.GetInt32("customer_id");
             c.CustomerName = reader.GetString("customer_name");
-            c.CustomerPhone = reader.GetInt32("customer_phone");
+            c.CustomerPhone = reader.GetString("customer_phone");
             c.CustomerAddress = reader.GetString("customer_address");
             return c;
         }
@@ -56,7 +82,7 @@ namespace DAL
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@customerName", c.CustomerName);
                 cmd.Parameters["@customerName"].Direction = System.Data.ParameterDirection.Input;
-                cmd.Parameters.AddWithValue("@customerPhone", c.CustomerName);
+                cmd.Parameters.AddWithValue("@customerPhone", c.CustomerPhone);
                 cmd.Parameters["@customerPhone"].Direction = System.Data.ParameterDirection.Input;
                 cmd.Parameters.AddWithValue("@customerAddress", c.CustomerAddress);
                 cmd.Parameters["@customerAddress"].Direction = System.Data.ParameterDirection.Input;

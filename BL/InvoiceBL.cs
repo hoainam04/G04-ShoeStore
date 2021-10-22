@@ -8,10 +8,20 @@ namespace BL
     public class InvoiceBL
     {
         private InvoiceDAL odl = new InvoiceDAL();
-        public bool CreateOrder(Invoice order)
+        public bool CreateInvoice(Invoice invoice)
         {
-            bool result = odl.CreateOrder(order);
+            bool result = odl.CreateInvoice(invoice);
             return result;
         }
+        public Invoice PrintInvoice(Invoice invoice)
+        {
+            return odl.GetInvoice(invoice);
+        }
+
+        public Invoice PrintInvoiceNo(int invoiceNo)
+        {
+            return odl.GetInvoiceNo(invoiceNo);
+        }
+
     }
 }

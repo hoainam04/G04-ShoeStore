@@ -8,9 +8,12 @@ namespace BL
     public class CustomerBL
     {
         private CustomerDAL cdal = new CustomerDAL();
-        public Customer GetById(int customerId)
+        public Customer GetCustomerById(int customerId)
         {
-            return cdal.GetById(customerId);
+            return cdal.GetCustomerById(customerId);
+        }
+        public Customer GetCustomerByPhone(int customerPhone){
+            return cdal.GetCustomerByPhone(customerPhone);
         }
 
         public int AddCustomer(Customer customer)
